@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nghiên Cứu Khoa Học: Tác Động Của Thị Giác Đến Định Hướng Tiêu Dùng | Nguyễn Chí Công</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(29, 78, 216, 0.9) 0%, rgba(30, 64, 175, 0.8) 100%);
+        }
+        .section-title {
+            font-weight: 900;
+            font-size: 2.5rem;
+            line-height: 1.2;
+            background: -webkit-linear-gradient(45deg, #1e40af, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3b82f6;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        /* Animation for elements fading in on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Custom modal styles */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-xl font-bold text-blue-800">SmartPick</a>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#gioi-thieu" class="nav-link text-gray-600 hover:text-blue-600 font-medium">Giới thiệu</a>
+                    <a href="#ket-qua" class="nav-link text-gray-600 hover:text-blue-600 font-medium">Kết quả</a>
+                    <a href="#quiz" class="nav-link text-gray-600 hover:text-blue-600 font-medium">Quiz</a>
+                    <a href="#cam-nang" class="nav-link text-gray-600 hover:text-blue-600 font-medium">Cẩm nang</a>
+                    <a href="#lien-he" class="nav-link text-gray-600 hover:text-blue-600 font-medium">Liên hệ</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#gioi-thieu" class="block py-2 text-gray-600 hover:text-blue-600">Giới thiệu</a>
+            <a href="#ket-qua" class="block py-2 text-gray-600 hover:text-blue-600">Kết quả</a>
+            <a href="#quiz" class="block py-2 text-gray-600 hover:text-blue-600">Quiz</a>
+            <a href="#cam-nang" class="block py-2 text-gray-600 hover:text-blue-600">Cẩm nang</a>
+            <a href="#lien-he" class="block py-2 text-gray-600 hover:text-blue-600">Liên hệ</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative h-[80vh] min-h-[500px] flex items-center text-white">
+            <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://images.unsplash.com/photo-155782583a-89a04a503516?q=80&w=2070&auto=format&fit=crop');"></div>
+            <div class="absolute inset-0 hero-gradient"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-black leading-tight mb-4 tracking-tight">Tác Động Của Thị Giác Đến Định Hướng Tiêu Dùng</h1>
+                <p class="mt-2 text-yellow-300 font-semibold text-lg animate-pulse">Lưu ý: Đây là phiên bản DEMO. Bản chính thức dự kiến ra mắt vào tháng 10/2025.</p>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto my-8 font-light">
+                    Phân tích tác động của bao bì sản phẩm và thông điệp marketing đến hành vi mua sắm của học sinh THPT.
+                </p>
+                <a href="#gioi-thieu" class="bg-white text-blue-700 font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-100 transition duration-300 transform hover:scale-105">Khám Phá Ngay</a>
+            </div>
+        </section>
+
+        <section id="gioi-thieu" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-section">
+                        <h2 class="section-title mb-6">Giới Thiệu Đề Tài</h2>
+                        <p class="mb-4 text-gray-600 leading-relaxed">Trong bối cảnh thị trường cạnh tranh khốc liệt, các yếu tố thị giác như bao bì và marketing đã trở thành công cụ đắc lực để thu hút người tiêu dùng. Đặc biệt, lứa tuổi học sinh THPT, với sự nhạy bén về xu hướng và tâm lý dễ bị ảnh hưởng, là đối tượng mục tiêu quan trọng của nhiều nhãn hàng.</p>
+                        <p class="mb-4 text-gray-600 leading-relaxed">Đề tài này ra đời nhằm khám phá sâu hơn về mức độ và cách thức mà các yếu tố thị giác định hình quyết định mua sắm của các bạn trẻ, từ đó cung cấp một góc nhìn khoa học và những định hướng tiêu dùng hữu ích.</p>
+                         <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 mt-6 rounded-r-lg">
+                            <h3 class="font-bold">Tóm Tắt Nghiên Cứu</h3>
+                            <p class="mt-2 text-sm">Nghiên cứu khảo sát trên học sinh THPT tại P. Châu Đốc, P. Vĩnh Tế và TX. Tân Châu cho thấy nhận thức thị giác (bao bì, quảng cáo) đóng vai trò then chốt trong quyết định mua hàng, đặc biệt là với các sản phẩm mới.</p>
+                        </div>
+                    </div>
+                    <div class="fade-in-section">
+                         <img src="https://images.unsplash.com/photo-1545934243-639691a05b38?q=80&w=1000&auto=format&fit=crop" alt="Học sinh đang mua sắm" class="rounded-xl shadow-2xl w-full h-auto object-cover transform hover:scale-105 transition-transform duration-300">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ket-qua" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center mb-12 fade-in-section">Kết Quả Nghiên Cứu Nổi Bật (Dự kiến)</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-section">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-4">Biểu đồ 1: Sức hút từ bao bì</h3>
+                        <p class="text-gray-600 mb-6">Biểu đồ minh họa các yếu tố bao bì dự kiến có ảnh hưởng nhất. Màu sắc và hình ảnh được giả định là hai yếu tố có sức hút mạnh mẽ nhất đối với học sinh.</p>
+                        <canvas id="packagingChart"></canvas>
+                    </div>
+                    <div class="fade-in-section">
+                        <h3 class="text-2xl font-bold text-blue-800 mb-4">Biểu đồ 2: Tác động của Marketing</h3>
+                        <p class="text-gray-600 mb-6">Biểu đồ minh họa các kênh marketing dự kiến có tác động lớn nhất. Mạng xã hội được giả định là kênh có ảnh hưởng sâu rộng nhất đến giới trẻ.</p>
+                        <canvas id="marketingChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="quiz" class="py-20 bg-gray-50 relative">
+             <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://images.unsplash.com/photo-1528698827591-e1906b3a52b7?q=80&w=2070&auto=format&fit=crop');"></div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h2 class="section-title mb-4 fade-in-section">Bạn Là Người Tiêu Dùng Thế Nào?</h2>
+                <p class="max-w-2xl mx-auto text-gray-600 mb-12 fade-in-section">Hãy trả lời nhanh 6 câu hỏi dưới đây để khám phá phong cách tiêu dùng của bạn!</p>
+                <div id="quiz-container" class="max-w-3xl mx-auto text-left space-y-8 fade-in-section">
+                    </div>
+            </div>
+        </section>
+        
+        <section id="cam-nang" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center mb-12 fade-in-section">Cẩm Nang Tiêu Dùng Thông Minh</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 fade-in-section">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-red-100 text-red-600 p-3 rounded-full mr-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+                            <h3 class="text-xl font-bold text-gray-800">Cảnh giác hiệu ứng FOMO</h3>
+                        </div>
+                        <p class="text-gray-600">Đừng vội mua sắm theo "trend" chỉ vì sợ bỏ lỡ. Hãy tự hỏi bạn thực sự "cần" món đồ đó hay chỉ đang bị hiệu ứng FOMO (sợ tụt hậu) chi phối.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 fade-in-section">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-yellow-100 text-yellow-600 p-3 rounded-full mr-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-alert"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg></div>
+                            <h3 class="text-xl font-bold text-gray-800">Hàng không rõ nguồn gốc</h3>
+                        </div>
+                        <p class="text-gray-600">Hàng online "rẻ - đẹp" nhưng không rõ nguồn gốc tiềm ẩn nhiều nguy cơ. Luôn chọn nơi bán uy tín, kiểm tra xuất xứ và đọc đánh giá thật để bảo vệ bản thân.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 fade-in-section">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-100 text-purple-600 p-3 rounded-full mr-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg></div>
+                            <h3 class="text-xl font-bold text-gray-800">Tỉnh táo trước "Review"</h3>
+                        </div>
+                        <p class="text-gray-600">Không phải mọi clip review "chân thật" từ người nổi tiếng (KOLs) đều đáng tin. Đó có thể là quảng cáo trá hình. Hãy tìm kiếm đánh giá đa chiều.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 fade-in-section">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-blue-100 text-blue-600 p-3 rounded-full mr-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></div>
+                            <h3 class="text-xl font-bold text-gray-800">Lập kế hoạch chi tiêu</h3>
+                        </div>
+                        <p class="text-gray-600">Hãy là người tiêu dùng thông minh bằng cách lập danh sách mua sắm và phân biệt rõ ràng giữa thứ bạn thực sự "cần" và thứ bạn chỉ "muốn".</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-2 fade-in-section">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-green-100 text-green-600 p-3 rounded-full mr-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-leaf"><path d="M11 20A7 7 0 0 1 4 13q0-2.5 1.5-5A7 7 0 0 1 11 3v17Z"/><path d="M13 3a7 7 0 0 1 7 7q0 2.5-1.5 5A7 7 0 0 1 13 20V3Z"/></svg></div>
+                            <h3 class="text-xl font-bold text-gray-800">Tiêu dùng bền vững</h3>
+                        </div>
+                        <p class="text-gray-600">Mỗi lựa chọn mua sắm đều ảnh hưởng đến môi trường. Hãy ưu tiên sản phẩm thân thiện, tái sử dụng và có trách nhiệm với xã hội.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="thu-vien" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-5 gap-8">
+                    <div class="md:col-span-3 fade-in-section">
+                        <h2 class="section-title mb-8">Thư Viện Hình Ảnh</h2>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                            <img src="https://images.unsplash.com/photo-1624300623928-a80644002630?q=80&w=400&auto=format&fit=crop" alt="Bao bì sản phẩm 1" class="rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1585331464954-227f7b3e1564?q=80&w=400&auto=format&fit=crop" alt="Bao bì sản phẩm 2" class="rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1622288395932-a05ce0a0ac7a?q=80&w=400&auto=format&fit=crop" alt="Bao bì sản phẩm 3" class="rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?q=80&w=400&auto=format&fit=crop" alt="Bao bì sản phẩm 4" class="rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1610402239634-90c0f5451f50?q=80&w=400&auto=format&fit=crop" alt="Bao bì sản phẩm 5" class="rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1606503809723-27758a6a16a4?q=80&w=400&auto=format&fit=crop" alt="Bao bì sản phẩm 6" class="rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1553716653-7353c821538a?q=80&w=400&auto=format&fit=crop" alt="Bao bì sản phẩm 7" class="rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1615485925824-38a4d701e37f?q=80&w=400&auto=format&fit=crop" alt="Bao bì sản phẩm 8" class="rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1590530983149-a2e6f469950e?q=80&w=400&auto=format&fit=crop" alt="Bao bì sản phẩm 9" class="rounded-lg shadow-md hover:opacity-80 transition-opacity cursor-pointer">
+                        </div>
+                    </div>
+                    <div class="md:col-span-2 fade-in-section">
+                        <h2 class="section-title mb-8">Tài Liệu Tham Khảo</h2>
+                        <ul class="space-y-4 text-gray-600 list-disc list-inside">
+                            <li>Kotler, P., & Keller, K. L. (2016). <em>Marketing management</em> (15th ed.). Pearson Education.</li>
+                            <li>Solomon, M. R. (2020). <em>Consumer behavior: Buying, having, and being</em> (13th ed.). Pearson.</li>
+                            <li>Cialdini, R. B. (2007). <em>Influence: The psychology of persuasion</em>. Harper Business.</li>
+                            <li>Nghiên cứu về hành vi tiêu dùng của giới trẻ Việt Nam - Nielsen, 2023.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="lien-he" class="bg-blue-900 text-white py-16">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-6">Lời Cảm Ơn & Thông Tin Liên Hệ</h2>
+                <p class="max-w-3xl mx-auto mb-8 text-blue-200">
+                    Em xin chân thành cảm ơn sự hướng dẫn tận tình của quý thầy cô, sự hỗ trợ từ Ban Giám hiệu các trường và sự tham gia nhiệt tình của các bạn học sinh. Sự thành công của đề tài này không thể thiếu sự đóng góp quý báu đó.
+                </p>
+                <div class="border-t border-blue-700 pt-8 mt-8">
+                    <p class="font-bold text-xl">Tác giả: Nguyễn Chí Công</p>
+                    <a href="mailto:chicong3399@gmail.com" class="text-blue-300 hover:text-white transition-colors">chicong3399@gmail.com</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <div id="quiz-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop hidden">
+        <div class="bg-white rounded-lg shadow-2xl max-w-sm w-full text-center p-6 transform transition-all scale-95 opacity-0" id="modal-content">
+            <div id="modal-icon" class="mx-auto mb-4 w-16 h-16 rounded-full flex items-center justify-center">
+                </div>
+            <h3 id="modal-title" class="text-xl font-bold text-gray-800 mb-2"></h3>
+            <p id="modal-text" class="text-gray-600"></p>
+            <button id="modal-close-button" class="mt-6 bg-blue-600 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-700 transition-colors">Tiếp Tục</button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- Mobile Menu ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Smooth Scrolling & Active Nav Link ---
+        const navLinks = document.querySelectorAll('.nav-link, #mobile-menu a');
+        const sections = document.querySelectorAll('section');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+        
+        // --- Fade-in on Scroll Animation ---
+        const fadeElements = document.querySelectorAll('.fade-in-section');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        fadeElements.forEach(el => {
+            fadeObserver.observe(el);
+        });
+
+        // --- Chart.js Implementation ---
+        const packagingCtx = document.getElementById('packagingChart').getContext('2d');
+        new Chart(packagingCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Màu sắc', 'Hình ảnh/Thiết kế', 'Thương hiệu', 'Chất liệu'],
+                datasets: [{
+                    label: 'Tầm quan trọng',
+                    data: [45, 30, 15, 10], // Placeholder data
+                    backgroundColor: ['#2563eb', '#3b82f6', '#60a5fa', '#93c5fd'],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' },
+                    title: { display: false }
+                }
+            }
+        });
+
+        const marketingCtx = document.getElementById('marketingChart').getContext('2d');
+        new Chart(marketingCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Mạng xã hội', 'Bạn bè', 'Quảng cáo TV', 'Báo chí'],
+                datasets: [{
+                    label: 'Mức độ ảnh hưởng (%)',
+                    data: [68, 55, 32, 15], // Placeholder data
+                    backgroundColor: '#3b82f6',
+                    borderRadius: 5,
+                }]
+            },
+            options: {
+                responsive: true,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                },
+                scales: {
+                    x: { beginAtZero: true }
+                }
+            }
+        });
+
+        // --- Quiz Logic ---
+        const quizContainer = document.getElementById('quiz-container');
+        const quizModal = document.getElementById('quiz-modal');
+        const modalContent = document.getElementById('modal-content');
+        const modalCloseButton = document.getElementById('modal-close-button');
+        const modalIcon = document.getElementById('modal-icon');
+        const modalTitle = document.getElementById('modal-title');
+        const modalText = document.getElementById('modal-text');
+
+        const quizData = [
+            {
+                question: "Khi đi siêu thị mua đồ ăn vặt, yếu tố nào ảnh hưởng đến bạn đầu tiên?",
+                answers: [
+                    { text: "Bao bì trông thật hấp dẫn và bắt mắt.", type: "emotion" },
+                    { text: "Thương hiệu này mình đã nghe nói nhiều.", type: "emotion" },
+                    { text: "Bảng thành phần dinh dưỡng và hạn sử dụng.", type: "smart" }
+                ]
+            },
+            {
+                question: "Một sản phẩm có quảng cáo 'Giảm giá 50% chỉ hôm nay!'. Bạn sẽ:",
+                answers: [
+                    { text: "Mua ngay vì sợ hết khuyến mãi.", type: "impulsive" },
+                    { text: "Suy nghĩ xem mình có thực sự cần nó không.", type: "smart" },
+                    { text: "So sánh giá của nó với các sản phẩm tương tự.", type: "smart" }
+                ]
+            },
+            {
+                question: "Bạn thấy một người nổi tiếng bạn yêu thích đang quảng cáo cho một loại nước giải khát mới. Bạn sẽ:",
+                answers: [
+                    { text: "Chắc chắn sẽ mua uống thử.", type: "impulsive" },
+                    { text: "Thấy thú vị nhưng sẽ tìm hiểu thêm về sản phẩm.", type: "smart" },
+                    { text: "Không quan tâm lắm, mình chỉ mua thứ mình thích.", type: "smart" }
+                ]
+            },
+             {
+                question: "Bao bì sản phẩm ghi '100% tự nhiên' nhưng bảng thành phần có nhiều chất lạ. Bạn tin vào đâu?",
+                answers: [
+                    { text: "Tin vào dòng chữ '100% tự nhiên' trên bao bì.", type: "impulsive" },
+                    { text: "Cảm thấy hoang mang và không mua.", type: "smart" },
+                    { text: "Tin vào bảng thành phần chi tiết.", type: "smart" }
+                ]
+            },
+            {
+                question: "Bạn chọn mua một cây bút giữa hai lựa chọn: một cây đơn giản và một cây có hình nhân vật bạn thích nhưng đắt hơn. Bạn chọn:",
+                answers: [
+                    { text: "Cây bút có hình nhân vật hoạt hình.", type: "emotion" },
+                    { text: "Cây bút đơn giản để tiết kiệm.", type: "smart" },
+                    { text: "Cân nhắc xem chất lượng mực của cây nào tốt hơn.", type: "smart" }
+                ]
+            },
+            {
+                question: "Khi xem một quảng cáo, điều gì đọng lại trong bạn lâu nhất?",
+                answers: [
+                    { text: "Giai điệu bài hát quảng cáo rất bắt tai.", type: "emotion" },
+                    { text: "Các lợi ích, công dụng của sản phẩm được nêu ra.", type: "smart" },
+                    { text: "Hình ảnh đẹp mắt, màu sắc ấn tượng.", type: "emotion" }
+                ]
+            }
+        ];
+
+        const feedback = {
+            smart: {
+                title: "Người tiêu dùng thông minh!",
+                text: "Tuyệt vời! Bạn là một người tiêu dùng rất lý trí, biết cách phân tích thông tin và không dễ bị chiêu thức marketing đánh lừa.",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>',
+                bgColor: 'bg-green-100',
+                textColor: 'text-green-600'
+            },
+            emotion: {
+                title: "Người tiêu dùng cảm xúc!",
+                text: "Bạn bị thu hút bởi vẻ đẹp và các xu hướng. Điều này không xấu, nhưng hãy cẩn thận xem xét chất lượng bên trong sản phẩm nữa nhé!",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>',
+                bgColor: 'bg-yellow-100',
+                textColor: 'text-yellow-600'
+            },
+            impulsive: {
+                title: "Người tiêu dùng còn thiếu quyết đoán!",
+                text: "Bạn khá nhạy cảm với các chiêu thức marketing và quảng cáo. Hãy dành thêm chút thời gian suy nghĩ trước khi quyết định mua hàng nhé.",
+                icon: '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>',
+                bgColor: 'bg-red-100',
+                textColor: 'text-red-600'
+            }
+        };
+        
+        function showModal(type) {
+            const fb = feedback[type];
+            modalIcon.innerHTML = fb.icon;
+            modalIcon.className = `mx-auto mb-4 w-16 h-16 rounded-full flex items-center justify-center ${fb.bgColor} ${fb.textColor}`;
+            modalTitle.textContent = fb.title;
+            modalText.textContent = fb.text;
+            
+            quizModal.classList.remove('hidden');
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+            }, 10);
+        }
+
+        function hideModal() {
+            modalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                quizModal.classList.add('hidden');
+            }, 200);
+        }
+
+        modalCloseButton.addEventListener('click', hideModal);
+        quizModal.addEventListener('click', (e) => {
+            if (e.target === quizModal) {
+                hideModal();
+            }
+        });
+
+        function buildQuiz() {
+            quizData.forEach((item, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'bg-white p-6 rounded-lg shadow-md';
+                
+                const questionText = document.createElement('p');
+                questionText.className = 'font-bold text-lg mb-4';
+                questionText.textContent = `${index + 1}. ${item.question}`;
+                questionDiv.appendChild(questionText);
+
+                const answersDiv = document.createElement('div');
+                answersDiv.className = 'space-y-3';
+                
+                item.answers.forEach(answer => {
+                    const button = document.createElement('button');
+                    button.className = 'w-full text-left p-3 bg-gray-100 rounded-md hover:bg-blue-100 transition-colors';
+                    button.textContent = answer.text;
+                    button.onclick = () => showModal(answer.type);
+                    answersDiv.appendChild(button);
+                });
+
+                questionDiv.appendChild(answersDiv);
+                quizContainer.appendChild(questionDiv);
+            });
+        }
+
+        buildQuiz();
+    });
+    </script>
+</body>
+</html>
